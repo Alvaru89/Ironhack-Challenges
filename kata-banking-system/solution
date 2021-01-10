@@ -1,0 +1,25 @@
+class User(object):
+    def __init__(self, name, balance, checking_account):
+        self.name = name
+        self.balance = balance
+        self.checking_account = checking_account
+    
+    def withdraw(self,cash):
+        if cash>self.balance:
+            raise ValueError
+        else:
+            self.balance -= cash
+            return (f'{self.name} has {self.balance}.')
+    
+        
+    def check(self,other,check_value):
+        if check_value>other.balance or other.checking_account==False:
+            raise ValueError
+        else:        
+            self.balance+=check_value
+            other.balance-=check_value
+            return (f'{self.name} has {self.balance} and {other.name} has {other.balance}.')
+    
+    def add_cash(self,cash):
+        self.balance += cash
+        return (f'{self.name} has {self.balance}.')
